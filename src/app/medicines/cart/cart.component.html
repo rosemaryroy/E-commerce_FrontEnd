@@ -1,0 +1,176 @@
+<!-- empty cart -->
+<div *ngIf="cartstatusMsg" class="container pt-5 mt-5">
+  <div class="row">
+    <div class="col text-center">
+      <!-- empty wishlist image -->
+      <img width="200px" src="https://media.tenor.com/QHaOFf1w_D4AAAAM/pill-happy-pill.gif" alt="empty wishlist">
+      <h3 class="mt-3">Your Cart is empty</h3>
+      <a class="btn btn-warning mt-2 mb-5 " routerLink="/medicines">Add items</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- place order -->
+
+
+<div *ngIf="!cartstatusMsg" class="container ">
+  <!-- Shopping cart table -->
+  <div class="card">
+      <div class="card-header">
+          <h2>Cart Summary</h2>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered m-0">
+              <thead>
+                <tr>
+                  <!-- Set columns width -->
+                   <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
+                  <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+                  <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
+                  <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                  <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                </tr>
+              </thead>
+              <tbody  *ngFor="let med of cart">
+      
+                <tr>
+                  <td class="p-4">
+                    <div class="media align-items-center">
+                      <img [src]="med.image" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                      <div class="media-body">
+                        <div class="name">
+                          <a routerLink="/medicines/view_medicine/{{med.document_id}}"  class=" text-primary" style="text-decoration: none;"> {{med.commercial_name}} </a>
+                        </div>
+                        <small>
+                          <span class="text-muted  ">manufactured by: </span> <span class="text-success">{{med.mah}}</span>
+                        </small>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-right font-weight-semibold align-middle p-3" ><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i>&nbsp;{{med.price}}</td>
+                  <td class="align-middle p-4"><input type="number" class="form-control text-center" value="{{med.quantity}}"></td>
+                  <td class="text-right font-weight-semibold align-middle p-3"><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i>&nbsp; {{med.totalCost}}</td>
+                  <td class="text-center align-middle px-0">
+                    <button (click)="removeItemFromCart(med.document_id)"  class="shop-tooltip close float-none text-danger btn" title="" data-original-title="Remove">×</button></td>
+                </tr>
+      
+                
+      
+              </tbody>
+            </table>
+          </div> 
+          <!-- / Shopping cart table -->
+      
+          <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+            <div class="mt-4">
+              <label class="text-muted font-weight-normal">Promocode</label>
+
+             <div class="d-flex">
+                <input (keyup)="discount($event)" type="text" placeholder="ABC" class="form-control">
+                <!-- <button  class="btn btn-default">Apply</button> -->
+             </div>
+              <div *ngIf="!promoMsg">
+
+                <span class="text-muted " class="text-danger">Invalid Coupon code! </span> 
+              </div>
+              <div *ngIf="promoMsg">
+
+                <span class="text-muted " class="text-success">coupon applied! </span> 
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="text-right mt-4 mr-5">
+                <label class="text-muted font-weight-normal pe-3 me-4">Total Price</label><span class="me-5 text-dark"> + </span>
+                <div class="text-large"><strong><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i> {{totalPrice}} </strong></div>
+              </div>
+              <div class="text-right mt-4 mr-5">
+                <label class="text-muted font-weight-normal pe-5 me-4">GST</label><span class="me-5 text-dark"> = </span>
+                <div class="text-large"><strong><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i> {{GST}} </strong></div>
+              </div>
+              <div class="text-right mt-4">
+                <label class="text-muted font-weight-normal m-0">Grand Total</label>
+                <div class="text-large"><strong><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i> {{grantTotal}} </strong></div>
+              </div>
+            </div>
+          </div>
+      
+          <div>
+            <a type="button" class="btn btn-lg btn-success  mt-2 " routerLink="/medicines">Back to Store</a>
+            <div style="float: right;" >
+            <a (click)="emptycart(phone)" type="button" class="btn btn-lg btn-primary mt-2 " data-bs-toggle="modal" data-bs-target="#checkout" >Check out</a>
+          </div>
+          </div>
+          <div>
+            
+          </div>
+      
+        </div>
+    </div>
+</div>
+
+
+<!-- check out -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="checkout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form -->
+
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name">
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="your number">
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" rows="3"></textarea>
+        </div>
+        <hr>
+        <h4>Select Payment Mode</h4>
+        <div class="form-check mt-4">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Gpay/PhonePay/Paytm
+          </label>
+        </div>
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            visa/Debit/Credit
+          </label>
+        </div>
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Cash on delivery
+          </label>
+        </div>
+
+      </div>
+      <div class="fw-bolder text-success m-3"> {{checkOutMsg}} </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" (click)="checkout()" (click)="showconfetti($event.target)" class="btn btn-primary">Pay Now</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<!-- empty wishlist -->
+<div *ngIf="wishlistStatusmsg" class="container mt-5">
+    <div class="row">
+        <div class="col text-center">
+            <!-- empty wishlist image -->
+            <img width="500px" src="https://tremendoc.com/doctor/images/land.gif" alt="empty wishlist">
+            <h3 class="mt-3">Your Wishlist is empty</h3>
+            <a class="btn btn-warning mt-2 mb-2" routerLink="/medicines">Add items</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- cart items -->
+<!-- <section *ngIf="!wishlistStatusmsg" class="py-5">
+    <div class="container px-4 px-lg-8 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let medicine of wishlist">
+                <div  class="card h-100"> -->
+<!-- Product image-->
+<!-- <img class="card-img-top" height="250px" [src]="medicine.image" alt="..." /> -->
+<!-- Product details-->
+<!-- <div class="card-body p-4">
+                        <div class="text-center"> -->
+<!-- Product name-->
+<!-- <h5 class="fw-bolder">{{medicine.commercial_name}}</h5> -->
+<!-- Product price-->
+<!-- <i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i>&nbsp; {{medicine.price}}
+
+                        </div>
+                    </div> -->
+<!-- Product actions-->
+<!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <button (click)="removeItem(medicine.document_id)" style="float: left;" class="text-danger btn"><i
+                            class="fa fa-solid fa-trash fa-fade fa-2x"></i></button>
+                    <button (click)="addtoCart(medicine)" style="float: right;" class="text-success btn"><i
+                            class="fa-solid fa-cart-plus fa-shake fa-2x"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+             
+        </div>
+    </div>
+</section> -->
+
+<section *ngIf="!wishlistStatusmsg" class="h-100" style="background-color: #eee;">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10" *ngFor="let medicine of wishlist">
+                <div class="card rounded-3 mb-3 mt-5">
+                    <div class="card-body p-4">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img [src]="medicine.image"
+                                    class="img-fluid rounded-3" alt="medicine image">
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                <h3 class="lead fw-normal mb-2">{{medicine.commercial_name}}</h3>
+                                
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                <button class="btn btn-link px-2">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+
+                                <input id="form1" min="0" name="quantity" value="1" type="number"
+                                    class="form-control form-control-sm" />
+
+                                <button class="btn btn-link px-2"
+                                    >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h5 class="mb-0"><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i>&nbsp; {{medicine.price}}</h5>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 ">
+                            <button (click)="removeItem(medicine.document_id)" class="text-danger btn"><i
+                                class="fa fa-solid fa-trash fa-2x"></i></button></div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <button (click)="addtoCart(medicine)" style="float: right;" class="text-success btn"><i
+                                    class="fa-solid fa-cart-plus fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

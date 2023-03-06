@@ -1,0 +1,70 @@
+/*   */
+
+@media screen and (min-device-width: 600px) {
+.homediv{
+    background-color: rgb(31, 169, 169);
+    
+}
+}
+@media screen and (min-device-width: 600px) {
+    .img{
+        margin-left: 400px;
+        padding-left: 250px;
+}
+}
+@media screen and (min-device-width: 600px) {
+   .a-tag{
+        margin-top: 20px;
+        padding-left: 10px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 20px;
+        
+    }
+      
+}
+/* @media screen and (min-device-width: 600px) {
+    .skin-img{
+        margin-left: 200px;
+        
+    }
+    .skin-a{
+        margin-top: 20px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 20px;
+    }
+} */
+
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}

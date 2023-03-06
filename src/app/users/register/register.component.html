@@ -1,0 +1,65 @@
+
+<div class="container mt-4 mb-3">
+
+    <h2>Register Form</h2>
+    
+    <div class="row">
+        <div class="col-4">
+            <img height="500px" width="450px" class="me-3"
+            src="https://img.freepik.com/premium-vector/full-pharmacy-basket-order-medical-product-purchase-delivery_272892-5.jpg?w=2000"
+            alt="no image">
+        </div>
+        <div class="col-8">
+            <form (ngSubmit)="register()" [formGroup]="registerForm" class="border mt-5 me-5 p-5">
+                
+                <!-- name -->
+            <div class="mt-4 mb-2">
+                <input name="name" formControlName="name" type="text" placeholder="Name" class="form-control" >
+            </div>
+
+            <!-- invalid phone -->
+            <div *ngIf="this.registerForm.get('name')?.errors&&this.registerForm.get('name')?.touched" class="text-danger mb-2" style="font-size: 15px; font-family: Arial, Helvetica, sans-serif;">
+                Invalid Name
+            </div>
+            
+           <!-- email -->
+            <div class="mt-4 mb-3">
+                <input name="email" formControlName="email" type="email" placeholder="Enter Your Email" class="form-control">
+            </div>
+            <!-- invalid phone -->
+            <div *ngIf="this.registerForm.get('email')?.errors&&this.registerForm.get('email')?.touched" class="text-danger mb-2" style="font-size: 15px; font-family: Arial, Helvetica, sans-serif;">
+                Invalid Email
+            </div>
+            <!--phone no  -->
+            <div class="mt-4 mb-3">
+                <input name="phone" formControlName="phone" type="text" placeholder="Enter Your Phone" class="form-control">
+            </div>
+
+             <!-- invalid phone -->
+             <div *ngIf="this.registerForm.get('phone')?.errors&&this.registerForm.get('phone')?.touched" class="text-danger mb-2" style="font-size: 15px; font-family: Arial, Helvetica, sans-serif;">
+                Invalid Phone Number
+            </div>
+
+            <!--password -->
+            <div class="mt-4 mb-3">
+                <input name="pswd" formControlName="pswd" type="password" placeholder="Enter Your Password" class="form-control">
+            </div>
+
+             <!-- invalid phone -->
+             <div *ngIf="this.registerForm.get('pswd')?.errors&&this.registerForm.get('pswd')?.touched" class="text-danger mb-2" style="font-size: 15px; font-family: Arial, Helvetica, sans-serif;">
+                Invalid Password
+            </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Register</button>
+                    &nbsp;
+                    <span>
+                       Already Registered? Click here to <a routerLink="/users/login">Login</a>
+    
+                    </span>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

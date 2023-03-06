@@ -1,0 +1,77 @@
+<!-- Header-->
+<!-- <header class="bg-light py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-dark"> -->
+
+
+<!-- </div>
+    </div>
+</header> -->
+<!-- Section-->
+<!-- <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let medicine of medicines | filter : searchItem : 'commercial_name'">
+                <div class="card h-100"> -->
+                    <!-- Product image-->
+                    <!-- <img class="card-img-top" height="250px" [src]="medicine.image" alt="..." /> -->
+                    <!-- Product details-->
+                    <!-- <div class="card-body p-4">
+                        <div class="text-center"> -->
+                            <!-- Product name-->
+                            <!-- <h5 class="fw-bolder">{{medicine.commercial_name}}</h5> -->
+                            <!-- Product price-->
+                            <!-- <i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i>&nbsp; {{medicine.price}}
+                        </div>
+                    </div> -->
+                    <!-- Product actions-->
+                    <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark mt-auto" 
+                            routerLink="/medicines/view_medicine/{{medicine.document_id}}">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             
+        </div>
+    </div>
+</section> -->
+
+<section class="h-100" style="background-color: #eee;">
+    <div class="container h-100 py-2 mt-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10" *ngFor="let medicine of medicines | filter : searchItem : 'commercial_name'" >
+                <div class="card rounded-3 mb-3 mt-5">
+                    <div class="card-body p-4">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img height="250px" [src]="medicine.image"
+                                    class="img-fluid rounded-3" alt="medicine image">
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                <h3 class="lead fw-normal mb-2">{{medicine.commercial_name}}</h3>
+                                
+                            </div>
+                           
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h5 class="mb-0"><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i>&nbsp; {{medicine.price}}</h5>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 ">
+                            <a class="btn btn-outline-dark mt-auto"  routerLink="/medicines/view_medicine/{{medicine.document_id}}" class="text-dark btn"><i
+                                class="fa fa-solid fa-eye fa-2x"></i></a></div>
+                            <!-- <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <button (click)="addtoCart(medicine)" style="float: right;" class="text-success btn"><i
+                                    class="fa-solid fa-cart-plus fa-2x"></i></button>
+                            </div> -->
+                        </div>
+                        <small>
+                            <span class="text-muted  ">manufactured by: </span> <span class="text-success">{{medicine.mah}}</span>
+                          </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

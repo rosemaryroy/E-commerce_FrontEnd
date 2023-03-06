@@ -1,0 +1,32 @@
+<!-- Product section -->
+<section class="py-3">
+    <div class="container px-3 px-lg-4 my-5">
+        <div  class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6 mt-3">
+                <img class="card-img-top mb-5 mb-md-0 mt-4 w-50" height="300px" [src]="viewMedicine.image" alt="..." /></div>
+            <div class="col-md-6 mt-3">
+                <div class="small mb-1 mt-3">SKU: {{viewMedicine.document_id}}</div>
+                <h1 class="display-5 fw-bolder" style="font-size: 35px;">{{viewMedicine.commercial_name}}</h1>
+                <div class="fs-5 mb-5">
+                    <span><i class="fa-sharp fa-solid fa-indian-rupee-sign text-dark"></i>&nbsp; {{viewMedicine.price}}</span>
+                </div>
+                <p class="lead">{{viewMedicine.mah}}</p>
+                <div class="d-flex">
+                    <button (click)="addtoWishlist(viewMedicine)" class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="fa fa-heart text-danger "></i>
+                        Add to Wishlist
+                    </button>
+                    <button (click)="addtoCart(viewMedicine)" class="btn btn-outline-success flex-shrink-0 ms-3" type="button">
+                        <i class="bi-cart-fill me-1 "></i>
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
